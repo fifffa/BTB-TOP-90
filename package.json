@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "node crawler.js"
+  },
+  "dependencies": {
+    "hangul-tools": "^0.1.4",
+    "mongoose": "^8.14.2",
+    "playwright-core": "^1.52.0"
+  }
+}
