@@ -1,23 +1,14 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-const MONGODB_URI =
-  process.env.DB_URL ||
-  "mongodb+srv://whclgud112:zmfak786@cluster0.vwdo7zu.mongodb.net/?retryWrites=true&w=majority";
-// const MONGODB_URI = "mongodb://127.0.0.1:27017/deputy"; // 로컬
-if (!MONGODB_URI) {
-  console.error("MONGODB_URI is not defined");
-  throw new Error(
-    "Please define the MONGODB_URI environment variable inside app.yaml"
-  );
-} else {
-  // console.log("MONGODB_URI:", MONGODB_URI); // 환경 변수 로깅
+const MONGODB_URL = process.env.MONGODB_URL;
+
+if (!MONGODB_URL) {
+  console.error("MONGODB_URL is not defined");
+  throw new Error("Please define the MONGODB_URL environment variable");
 }
 
-/**
- * Global is used here to maintain a cached connection across hot reloads
- * in development. This prevents connections growing exponentially
- * during API Route usage.
- */
 let cached = global.mongoose;
 
 if (!cached) {
@@ -25,18 +16,13 @@ if (!cached) {
 }
 
 async function dbConnect() {
-  if (cached.conn) {
-    return cached.conn;
-  }
+  if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    const opts = {
-      bufferCommands: false, // 이 옵션은 Mongoose가 몽고DB 커맨드를 버퍼링하지 않도록 합니다.
-    };
-
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      return mongoose;
-    });
+    const opts = { bufferCommands: false };
+    cached.promise = mongoose
+      .connect(MONGODB_URL, opts)
+      .then((mongoose) => mongoose);
   }
 
   cached.conn = await cached.promise;
