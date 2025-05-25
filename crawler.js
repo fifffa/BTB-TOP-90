@@ -161,6 +161,7 @@ function SortAndSlice(result, slice = 100) {
     );
 
     // // Sort in descending order based on average position value
+    console.log("positionsB:", positionsB);
     return positionsB - positionsA;
   });
 
@@ -320,6 +321,14 @@ async function main() {
       packName: "RTN TOP 70",
       playerPrice: [],
     };
+    const RMCF_TOP_80 = {
+      packName: "RMCF 포함 TOP 80",
+      playerPrice: [],
+    };
+    const HEROES23_TOP_75 = {
+      packName: "23HEROES 포함 TOP 75",
+      playerPrice: [],
+    };
 
     await dbConnect();
 
@@ -337,7 +346,7 @@ async function main() {
     }
     data.seasonPack.push(BTB_TOP_90);
 
-    // -------------------------------------- SPL TOP price 75 --------------------------------------
+    // // -------------------------------------- SPL TOP price 75 --------------------------------------
 
     const SPL_LIST = await playerSearch(270, 95); // playerSearch(시즌넘버, 최소오버롤)
     let SPL_RESULTS = await playerPriceValue(SPL_LIST, 10); // playerPriceValue(데이터 , 강화등급)
@@ -379,7 +388,7 @@ async function main() {
     }
     data.seasonPack.push(NG23_TOP_65);
 
-    // -------------------------------------- LOL,FA,22HEROES TOP 80 --------------------------------------
+    // // -------------------------------------- LOL,FA,22HEROES TOP 80 --------------------------------------
 
     const LOL_FA_22HEROES_LIST = await playerSearch([265, 261, 264], 95); // playerSearch(시즌넘버, 최소오버롤)
     let LOL_FA_22HEROES_RESULTS = await playerPriceValue(
@@ -398,7 +407,7 @@ async function main() {
     }
     data.seasonPack.push(LOL_FA_22HEROES_TOP_80);
 
-    // -------------------------------------- NTG_UP_VTR_MOG_LH_TKL TOP 100 --------------------------------------
+    // // -------------------------------------- NTG_UP_VTR_MOG_LH_TKL TOP 100 --------------------------------------
 
     const NTG_UP_VTR_MOG_LH_TKL_LIST = await playerSearch(
       [249, 246, 231, 233, 234, 225],
@@ -423,7 +432,7 @@ async function main() {
     }
     data.seasonPack.push(NTG_UP_VTR_MOG_LH_TKL_TOP_100);
 
-    // -------------------------------------- RTN TOP 70 --------------------------------------
+    // // -------------------------------------- RTN TOP 70 --------------------------------------
 
     const RTN_LIST = await playerSearch(284, 95); // playerSearch(시즌넘버, 최소오버롤)
     let RTN_RESULTS = await playerPriceValue(RTN_LIST, 10); // playerPriceValue(데이터 , 강화등급)
@@ -436,6 +445,32 @@ async function main() {
       }
     }
     data.seasonPack.push(RTN_TOP_70);
+    // // -------------------------------------- RMCF_CAP_CFA_21KFA TOP 80 --------------------------------------
+
+    const RMCF_LIST = await playerSearch([274, 252, 254, 294], 95); // playerSearch(시즌넘버, 최소오버롤)
+    let RMCF_RESULTS = await playerPriceValue(RMCF_LIST, 10); // playerPriceValue(데이터 , 강화등급)
+    await saveToDB(RMCF_RESULTS);
+    const RMCF_FINAL = SortAndSlice(RMCF_RESULTS, 80); // SortAndSlice(데이터 , 자르기숫자)
+    for (let item of RMCF_FINAL) {
+      const playerDocs = await Price.find({ id: item.id });
+      if (playerDocs.length > 0) {
+        RMCF_TOP_80.playerPrice.push(...playerDocs.map((p) => p._id));
+      }
+    }
+    data.seasonPack.push(RMCF_TOP_80);
+    // // -------------------------------------- 23HEROES_BOE21_22KFA_2012KH TOP 80 --------------------------------------
+
+    const HEROES23_LIST = await playerSearch([281, 253, 293, 247], 95); // playerSearch(시즌넘버, 최소오버롤)
+    let HEROES23_RESULTS = await playerPriceValue(HEROES23_LIST, 10); // playerPriceValue(데이터 , 강화등급)
+    await saveToDB(HEROES23_RESULTS);
+    const HEROES23_FINAL = SortAndSlice(HEROES23_RESULTS, 75); // SortAndSlice(데이터 , 자르기숫자)
+    for (let item of HEROES23_FINAL) {
+      const playerDocs = await Price.find({ id: item.id });
+      if (playerDocs.length > 0) {
+        HEROES23_TOP_75.playerPrice.push(...playerDocs.map((p) => p._id));
+      }
+    }
+    data.seasonPack.push(HEROES23_TOP_75);
 
     // -------------------------------------- UT_JNM_24HEROES_DC_JVA_CC_FCA_23HW_HG_RTN_23HEROES_RMCK_LN_SPL_23NG_LOL_FA_23KFA_22HEROES_BTB_CAP_CFA_EBS_BOE21_NTG_UP_22KFA TOP 70 --------------------------------------
 
