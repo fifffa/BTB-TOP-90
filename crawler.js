@@ -341,10 +341,16 @@ async function main() {
     for (let item of BTB_FINAL) {
       const playerDocs = await Price.find({ id: item.id });
       if (playerDocs.length > 0) {
-        BTB_TOP_90.playerPrice.push(...playerDocs.map((p) => p._id));
+        const playerData = {
+          grade: item.prices.grade,
+        };
+        playerDocs.map((p) => {
+          playerData.playerPrice = p._id;
+        });
       }
+      BTB_TOP_90.playerPrice.push(playerData);
     }
-    data.seasonPack.push(BTB_TOP_90);
+    data.seasonPack.push({ ...BTB_TOP_90 });
 
     // // -------------------------------------- SPL TOP price 75 --------------------------------------
 
@@ -354,11 +360,19 @@ async function main() {
     const SPL_FINAL = SortAndSlice(SPL_RESULTS, 75); // SortAndSlice(데이터 , 자르기숫자)
     for (let item of SPL_FINAL) {
       const playerDocs = await Price.find({ id: item.id });
+
       if (playerDocs.length > 0) {
-        SPL_TOP_75.playerPrice.push(...playerDocs.map((p) => p._id));
+        const playerData = {
+          grade: item.prices.grade,
+        };
+        playerDocs.map((p) => {
+          playerData.playerPrice = p._id;
+        });
       }
+
+      SPL_TOP_75.playerPrice.push(playerData);
     }
-    data.seasonPack.push(SPL_TOP_75);
+    data.seasonPack.push({ ...SPL_TOP_75 });
 
     // -------------------------------------- HG TOP price 100 --------------------------------------
 
@@ -369,10 +383,16 @@ async function main() {
     for (let item of HG_FINAL) {
       const playerDocs = await Price.find({ id: item.id });
       if (playerDocs.length > 0) {
-        HG_TOP_100.playerPrice.push(...playerDocs.map((p) => p._id));
+        const playerData = {
+          grade: item.prices.grade,
+        };
+        playerDocs.map((p) => {
+          playerData.playerPrice = p._id;
+        });
       }
+      HG_TOP_100.playerPrice.push(playerData);
     }
-    data.seasonPack.push(HG_TOP_100);
+    data.seasonPack.push({ ...HG_TOP_100 });
 
     // -------------------------------------- 23NG TOP price 65 --------------------------------------
 
@@ -383,10 +403,16 @@ async function main() {
     for (let item of NG23_FINAL) {
       const playerDocs = await Price.find({ id: item.id });
       if (playerDocs.length > 0) {
-        NG23_TOP_65.playerPrice.push(...playerDocs.map((p) => p._id));
+        const playerData = {
+          grade: item.prices.grade,
+        };
+        playerDocs.map((p) => {
+          playerData.playerPrice = p._id;
+        });
       }
+      NG23_TOP_65.playerPrice.push(playerData);
     }
-    data.seasonPack.push(NG23_TOP_65);
+    data.seasonPack.push({ ...NG23_TOP_65 });
 
     // // -------------------------------------- LOL,FA,22HEROES TOP 80 --------------------------------------
 
@@ -400,12 +426,17 @@ async function main() {
     for (let item of LOL_FA_22HEROES_FINAL) {
       const playerDocs = await Price.find({ id: item.id });
       if (playerDocs.length > 0) {
-        LOL_FA_22HEROES_TOP_80.playerPrice.push(
-          ...playerDocs.map((p) => p._id)
-        );
+        const playerData = {
+          grade: item.prices.grade,
+        };
+        playerDocs.map((p) => {
+          playerData.playerPrice = p._id;
+        });
       }
+
+      LOL_FA_22HEROES_TOP_80.playerPrice.push(playerData);
     }
-    data.seasonPack.push(LOL_FA_22HEROES_TOP_80);
+    data.seasonPack.push({ ...LOL_FA_22HEROES_TOP_80 });
 
     // // -------------------------------------- NTG_UP_VTR_MOG_LH_TKL TOP 100 --------------------------------------
 
@@ -425,12 +456,17 @@ async function main() {
     for (let item of NTG_UP_VTR_MOG_LH_TKL_FINAL) {
       const playerDocs = await Price.find({ id: item.id });
       if (playerDocs.length > 0) {
-        NTG_UP_VTR_MOG_LH_TKL_TOP_100.playerPrice.push(
-          ...playerDocs.map((p) => p._id)
-        );
+        const playerData = {
+          grade: item.prices.grade,
+        };
+        playerDocs.map((p) => {
+          playerData.playerPrice = p._id;
+        });
       }
+
+      NTG_UP_VTR_MOG_LH_TKL_TOP_100.playerPrice.push(playerData);
     }
-    data.seasonPack.push(NTG_UP_VTR_MOG_LH_TKL_TOP_100);
+    data.seasonPack.push({ ...NTG_UP_VTR_MOG_LH_TKL_TOP_100 });
 
     // // -------------------------------------- RTN TOP 70 --------------------------------------
 
@@ -441,10 +477,16 @@ async function main() {
     for (let item of RTN_FINAL) {
       const playerDocs = await Price.find({ id: item.id });
       if (playerDocs.length > 0) {
-        RTN_TOP_70.playerPrice.push(...playerDocs.map((p) => p._id));
+        const playerData = {
+          grade: item.prices.grade,
+        };
+        playerDocs.map((p) => {
+          playerData.playerPrice = p._id;
+        });
       }
+      RTN_TOP_70.playerPrice.push(playerData);
     }
-    data.seasonPack.push(RTN_TOP_70);
+    data.seasonPack.push({ ...RTN_TOP_70 });
     // // -------------------------------------- RMCF_CAP_CFA_21KFA TOP 80 --------------------------------------
 
     const RMCF_LIST = await playerSearch([274, 252, 254, 294], 95); // playerSearch(시즌넘버, 최소오버롤)
@@ -454,10 +496,16 @@ async function main() {
     for (let item of RMCF_FINAL) {
       const playerDocs = await Price.find({ id: item.id });
       if (playerDocs.length > 0) {
-        RMCF_TOP_80.playerPrice.push(...playerDocs.map((p) => p._id));
+        const playerData = {
+          grade: item.prices.grade,
+        };
+        playerDocs.map((p) => {
+          playerData.playerPrice = p._id;
+        });
       }
+      RMCF_TOP_80.playerPrice.push(playerData);
     }
-    data.seasonPack.push(RMCF_TOP_80);
+    data.seasonPack.push({ ...RMCF_TOP_80 });
     // // -------------------------------------- 23HEROES_BOE21_22KFA_2012KH TOP 80 --------------------------------------
 
     const HEROES23_LIST = await playerSearch([281, 253, 293, 247], 95); // playerSearch(시즌넘버, 최소오버롤)
@@ -467,10 +515,16 @@ async function main() {
     for (let item of HEROES23_FINAL) {
       const playerDocs = await Price.find({ id: item.id });
       if (playerDocs.length > 0) {
-        HEROES23_TOP_75.playerPrice.push(...playerDocs.map((p) => p._id));
+        const playerData = {
+          grade: item.prices.grade,
+        };
+        playerDocs.map((p) => {
+          playerData.playerPrice = p._id;
+        });
       }
+      HEROES23_TOP_75.playerPrice.push(playerData);
     }
-    data.seasonPack.push(HEROES23_TOP_75);
+    data.seasonPack.push({ ...HEROES23_TOP_75 });
 
     // -------------------------------------- UT_JNM_24HEROES_DC_JVA_CC_FCA_23HW_HG_RTN_23HEROES_RMCK_LN_SPL_23NG_LOL_FA_23KFA_22HEROES_BTB_CAP_CFA_EBS_BOE21_NTG_UP_22KFA TOP 70 --------------------------------------
 
