@@ -347,8 +347,8 @@ async function main() {
         playerDocs.map((p) => {
           playerData.playerPrice = p._id;
         });
+        BTB_TOP_90.playerPrice.push(playerData);
       }
-      BTB_TOP_90.playerPrice.push(playerData);
     }
     data.seasonPack.push({ ...BTB_TOP_90 });
 
@@ -368,9 +368,8 @@ async function main() {
         playerDocs.map((p) => {
           playerData.playerPrice = p._id;
         });
+        SPL_TOP_75.playerPrice.push(playerData);
       }
-
-      SPL_TOP_75.playerPrice.push(playerData);
     }
     data.seasonPack.push({ ...SPL_TOP_75 });
 
@@ -389,8 +388,8 @@ async function main() {
         playerDocs.map((p) => {
           playerData.playerPrice = p._id;
         });
+        HG_TOP_100.playerPrice.push(playerData);
       }
-      HG_TOP_100.playerPrice.push(playerData);
     }
     data.seasonPack.push({ ...HG_TOP_100 });
 
@@ -409,8 +408,8 @@ async function main() {
         playerDocs.map((p) => {
           playerData.playerPrice = p._id;
         });
+        NG23_TOP_65.playerPrice.push(playerData);
       }
-      NG23_TOP_65.playerPrice.push(playerData);
     }
     data.seasonPack.push({ ...NG23_TOP_65 });
 
@@ -432,9 +431,8 @@ async function main() {
         playerDocs.map((p) => {
           playerData.playerPrice = p._id;
         });
+        LOL_FA_22HEROES_TOP_80.playerPrice.push(playerData);
       }
-
-      LOL_FA_22HEROES_TOP_80.playerPrice.push(playerData);
     }
     data.seasonPack.push({ ...LOL_FA_22HEROES_TOP_80 });
 
@@ -462,9 +460,8 @@ async function main() {
         playerDocs.map((p) => {
           playerData.playerPrice = p._id;
         });
+        NTG_UP_VTR_MOG_LH_TKL_TOP_100.playerPrice.push(playerData);
       }
-
-      NTG_UP_VTR_MOG_LH_TKL_TOP_100.playerPrice.push(playerData);
     }
     data.seasonPack.push({ ...NTG_UP_VTR_MOG_LH_TKL_TOP_100 });
 
@@ -483,8 +480,8 @@ async function main() {
         playerDocs.map((p) => {
           playerData.playerPrice = p._id;
         });
+        RTN_TOP_70.playerPrice.push(playerData);
       }
-      RTN_TOP_70.playerPrice.push(playerData);
     }
     data.seasonPack.push({ ...RTN_TOP_70 });
     // // -------------------------------------- RMCF_CAP_CFA_21KFA TOP 80 --------------------------------------
@@ -502,8 +499,8 @@ async function main() {
         playerDocs.map((p) => {
           playerData.playerPrice = p._id;
         });
+        RMCF_TOP_80.playerPrice.push(playerData);
       }
-      RMCF_TOP_80.playerPrice.push(playerData);
     }
     data.seasonPack.push({ ...RMCF_TOP_80 });
     // // -------------------------------------- 23HEROES_BOE21_22KFA_2012KH TOP 80 --------------------------------------
@@ -521,8 +518,8 @@ async function main() {
         playerDocs.map((p) => {
           playerData.playerPrice = p._id;
         });
+        HEROES23_TOP_75.playerPrice.push(playerData);
       }
-      HEROES23_TOP_75.playerPrice.push(playerData);
     }
     data.seasonPack.push({ ...HEROES23_TOP_75 });
 
