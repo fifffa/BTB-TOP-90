@@ -561,7 +561,8 @@ async function main() {
     const doc = await EventValueChart.findOne({ id: "챔피언스 저니 6000p" });
 
     let mergedSeasonPacks = [];
-
+    const now = new Date();
+    const koreaTime = new Date(now.getTime() + 9 * 60 * 60 * 1000);
     if (doc) {
       // 2. 기존 seasonPack 가져오기
       const existingSeasonPacks = doc.seasonPack;
@@ -595,7 +596,7 @@ async function main() {
       { id: "챔피언스 저니 6000p" },
       {
         $set: {
-          updateTime: new Date(),
+          updateTime: koreaTime,
           seasonPack: mergedSeasonPacks,
         },
       },
